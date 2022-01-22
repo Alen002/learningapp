@@ -1,20 +1,21 @@
 <template>
-  <div>
-    <li>
-      <div>
-        <header>
-          <h3>{{ title }}</h3>
-          <button>Delete</button>
-        </header>
-      </div>
+  <li>
+    <base-card>
+      <header>
+        <h3>{{ title }}</h3>
+        <button>Delete</button>
+      </header>
+
       <p>{{ description }}</p>
       <nav><a :href="link">View</a></nav>
-    </li>
-  </div>
+    </base-card>
+  </li>
 </template>
 
 <script>
+import BaseCard from '../UI/BaseCard.vue';
 export default {
+  components: { BaseCard },
   props: ['title', 'description', 'link'],
 };
 </script>
@@ -23,14 +24,12 @@ export default {
 li {
   margin: auto;
   max-width: 40rem;
-  background-color: lightblue;
 }
 
 header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: bisque;
 }
 
 h3 {
