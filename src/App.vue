@@ -1,14 +1,18 @@
 <template>
   <h3>App</h3>
-  <ul>
-    <base-list-item :storedRessources="storedRessources" />
+  <ul v-for="ressource in storedRessources" :key="ressource.id">
+    <learning-ressource
+      :title="ressource.title"
+      :description="ressource.description"
+      :link="ressource.link"
+    />
   </ul>
 </template>
 
 <script>
-import BaseListItem from './components/BaseListItem.vue';
+import LearningRessource from './components/learning-ressources/LearningRessource.vue';
 export default {
-  components: { BaseListItem },
+  components: { LearningRessource },
   data() {
     return {
       storedRessources: [
