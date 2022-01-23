@@ -14,7 +14,7 @@
 import LearningRessources from './LearningRessource.vue';
 export default {
   components: { LearningRessources },
-  props: ['ressources'],
+  props: { ressources: { type: Array, required: true } },
 };
 </script>
 

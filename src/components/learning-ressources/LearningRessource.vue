@@ -17,7 +17,11 @@ import BaseCard from '../UI/BaseCard.vue';
 import BaseButton from '../UI/BaseButton.vue';
 export default {
   components: { BaseCard, BaseButton },
-  props: ['title', 'description', 'link'],
+  props: {
+    title: { type: String, required: true },
+    description: { type: String, required: true },
+    link: { type: String, required: true },
+  },
   data() {
     return {
       buttonCapture: 'delete',
