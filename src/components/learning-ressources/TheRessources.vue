@@ -10,8 +10,6 @@
       buttonTitle="Add Ressource"
       type="text"
     />
-    <!-- <button @click="setSelectedTab('add-ressource')">click me</button>
-    <button @click="setSelectedTab('stored-ressources')">click me</button> -->
   </base-card>
   <!-- dynamic component -->
   <component :is="selectedTab"></component>
