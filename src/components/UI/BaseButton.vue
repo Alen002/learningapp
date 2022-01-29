@@ -1,11 +1,17 @@
 <template>
-  <button :type="type" :class="mode">Delete</button>
+  <button :type="type" :class="mode">
+    {{ buttonTitle }}
+  </button>
   <slot></slot>
 </template>
 
 <script>
 export default {
-  props: ['type', 'mode'],
+  props: {
+    type: { type: String, required: true },
+    mode: { type: String, required: true },
+    buttonTitle: { type: String, required: true },
+  },
 };
 </script>
 
@@ -18,6 +24,7 @@ button {
   color: white;
   cursor: pointer;
   border-radius: 5px;
+  margin-right: 20px;
 }
 
 button:hover,

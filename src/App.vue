@@ -1,14 +1,18 @@
 <template>
+  <the-ressources />
   <the-header title="Remember Stuff" />
   <stored-ressources :ressources="storedRessources" />
+  <add-ressources />
 </template>
 
 <script>
 import StoredRessources from './components/learning-ressources/StoredRessources.vue';
 import TheHeader from './components/layouts/TheHeader.vue';
+import TheRessources from './components/learning-ressources/TheRessources.vue';
+import AddRessources from './components/learning-ressources/AddRessource.vue';
 
 export default {
-  components: { StoredRessources, TheHeader },
+  components: { StoredRessources, TheHeader, TheRessources, AddRessources },
   data() {
     return {
       storedRessources: [
