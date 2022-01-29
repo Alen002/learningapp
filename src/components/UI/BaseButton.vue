@@ -1,5 +1,5 @@
 <template>
-  <button :type="type" :class="mode">
+  <button :type="type" :class="mode" @click="handleClick">
     {{ buttonTitle }}
   </button>
   <slot></slot>
@@ -11,6 +11,11 @@ export default {
     type: { type: String, required: true },
     mode: { type: String, required: true },
     buttonTitle: { type: String, required: true },
+  },
+  methods: {
+    handleClick() {
+      this.$emit('clickedButton');
+    },
   },
 };
 </script>
