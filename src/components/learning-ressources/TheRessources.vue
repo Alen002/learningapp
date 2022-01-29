@@ -4,11 +4,13 @@
       @clickedButton="setSelectedTab('stored-ressources')"
       buttonTitle="Stored Ressources"
       type="text"
+      :mode="storedResButtonMode"
     />
     <base-button
       @clickedButton="setSelectedTab('add-ressource')"
       buttonTitle="Add Ressource"
       type="text"
+      :mode="addResButtonMode"
     />
   </base-card>
   <!-- dynamic component -->
@@ -43,6 +45,14 @@ export default {
   },
   provide() {
     return { ressources: this.storedRessources };
+  },
+  computed: {
+    storedResButtonMode() {
+      return this.selectedTab === 'stored-ressources' ? null : 'flat';
+    },
+    addResButtonMode() {
+      return this.selectedTab === 'add-ressource' ? null : 'flat';
+    },
   },
   methods: {
     setSelectedTab(tab) {
