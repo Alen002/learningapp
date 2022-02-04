@@ -41,7 +41,6 @@ export default {
           description: 'Google Search Engine',
           link: 'https://google.com',
         },
-        { title: 'test', id: this.provideEnteredData },
       ],
     };
   },
@@ -65,17 +64,15 @@ export default {
       this.selectedTab = tab;
     },
     addResource(title, description, url) {
-      console.log('addResource');
       const newResource = {
         id: new Date(),
         description: description,
-        url: url,
+        link: url,
         title: title,
       };
-      console.log('newResource___', newResource);
-      // Not working
+
       this.storedResources.push(newResource);
-      console.log('test___', this.storedResources);
+      this.selectedTab = 'stored-ressources';
     },
   },
 };

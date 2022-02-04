@@ -25,7 +25,6 @@
         <base-button type="submit" buttonTitle="Add Ressource" />
       </div>
     </form>
-    {{ enteredData }}
   </base-card>
 </template>
 
@@ -42,12 +41,10 @@ export default {
   },
   methods: {
     submitData() {
-      console.log('submitData');
       const title = this.titleInput;
       const description = this.desInput;
-      const url = this.urlInput;
-      console.log('submitData___', title, description);
-      this.addResource(title, description, url);
+      const link = this.urlInput;
+      this.addResource(title, description, link);
     },
   },
   inject: ['addResource'],
