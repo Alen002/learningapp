@@ -1,28 +1,62 @@
 <template>
   <base-card>
     <h2>Add Ressource</h2>
-    <form>
+    <form @submit.prevent="submitData">
       <div class="form-control">
         <label for="title">Title</label>
-        <input type="text" id="title" name="title" />
+        <input type="text" id="title" name="title" v-model="titleInput" />
       </div>
 
       <div class="form-control">
         <label for="description">Description</label
-        ><textarea id="description" name="description" rows="3"></textarea>
+        ><textarea
+          id="description"
+          name="description"
+          rows="3"
+          v-model="desInput"
+        ></textarea>
       </div>
 
       <div class="form-control">
         <label for="link">Link</label>
-        <input type="url" id="link" name="link" />
+        <input type="url" id="link" name="link" v-model="urlInput" />
       </div>
-      <div><base-button type="submit" buttonTitle="Add Ressource" /></div>
+      <div>
+        <base-button type="submit" buttonTitle="Add Ressource" />
+      </div>
     </form>
+    {{ enteredData }}
   </base-card>
 </template>
 
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      id: 'test',
+      titleInput: '',
+      desInput: '',
+      urlInput: '',
+      enteredData: [],
+    };
+  },
+  methods: {
+    submitData() {
+      console.log('submitData');
+      const title = this.titleInput;
+      const description = this.desInput;
+      const url = this.urlInput;
+      console.log('submitData___', title, description);
+      this.addResource(title, description, url);
+    },
+  },
+  inject: ['addResource'],
+  provide() {
+    return {
+      provideEnteredData: this.submitData,
+    };
+  },
+};
 </script>
 
 <style scoped>

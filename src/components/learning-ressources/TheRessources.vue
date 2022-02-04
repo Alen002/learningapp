@@ -12,6 +12,7 @@
       type="text"
       :mode="addResButtonMode"
     />
+    <h1>{{ testing }}</h1>
   </base-card>
   <!-- dynamic component -->
   <component :is="selectedTab"></component>
@@ -27,7 +28,7 @@ export default {
   data() {
     return {
       selectedTab: 'stored-ressources',
-      storedRessources: [
+      storedResources: [
         {
           id: 'official-guide',
           title: 'Official Guide',
@@ -40,11 +41,16 @@ export default {
           description: 'Google Search Engine',
           link: 'https://google.com',
         },
+        { title: 'test', id: this.provideEnteredData },
       ],
     };
   },
+  inject: ['provideEnteredData'],
   provide() {
-    return { ressources: this.storedRessources };
+    return {
+      resources: this.storedResources,
+      addResource: this.addResource,
+    };
   },
   computed: {
     storedResButtonMode() {
@@ -57,6 +63,19 @@ export default {
   methods: {
     setSelectedTab(tab) {
       this.selectedTab = tab;
+    },
+    addResource(title, description, url) {
+      console.log('addResource');
+      const newResource = {
+        id: new Date(),
+        description: description,
+        url: url,
+        title: title,
+      };
+      console.log('newResource___', newResource);
+      // Not working
+      this.storedResources.push(newResource);
+      console.log('test___', this.storedResources);
     },
   },
 };
