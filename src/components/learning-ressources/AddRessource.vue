@@ -1,4 +1,21 @@
 <template>
+  <base-dialog
+    v-if="inputIsInvalid"
+    title="Invalid Input"
+    @close="confirmError"
+  >
+    <template #default>
+      <p>Unfortunately, at least one input value is invalid.</p>
+      <p>
+        Please check all inputs and make sure you enter at least a few
+        characters into each input field.
+      </p>
+    </template>
+    <template #actions>
+      <base-button buttonTitle="Close" @clickedButton="confirmError" />
+    </template>
+  </base-dialog>
+
   <base-card>
     <h2>Add Ressource</h2>
     <form @submit.prevent="submitData">
@@ -37,6 +54,7 @@ export default {
       desInput: '',
       urlInput: '',
       enteredData: [],
+      inputIsInvalid: false,
     };
   },
   methods: {
@@ -44,7 +62,19 @@ export default {
       const title = this.titleInput;
       const description = this.desInput;
       const link = this.urlInput;
+
+      if (
+        title.trim() === '' ||
+        description.trim() === '' ||
+        link.trim() === ''
+      ) {
+        this.inputIsInvalid = true;
+        return;
+      }
       this.addResource(title, description, link);
+    },
+    confirmError() {
+      this.inputIsInvalid = false;
     },
   },
   inject: ['addResource'],
