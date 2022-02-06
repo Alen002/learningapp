@@ -16,7 +16,7 @@
 </template>
 
 <script>
-export default { props: ['title'] };
+export default { props: ['title'], emits: ['close'] };
 </script>
 
 <style scoped>
