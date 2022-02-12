@@ -2,7 +2,6 @@
   <li>
     <base-card>
       <header>
-        <h3>{{ id }}</h3>
         <h3>{{ title }}</h3>
         <base-button mode="flat" />
       </header>
