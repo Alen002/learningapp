@@ -2,12 +2,14 @@
   <li>
     <base-card>
       <header>
+        <h3>{{ id }}</h3>
         <h3>{{ title }}</h3>
         <base-button mode="flat" />
       </header>
 
       <p>{{ description }}</p>
       <nav><a :href="link">View</a></nav>
+      <base-button buttonTitle="Delete" @clickedButton="getId" />
     </base-card>
   </li>
 </template>
@@ -21,11 +23,21 @@ export default {
     title: { type: String, required: true },
     description: { type: String, required: true },
     link: { type: String, required: true },
+    id: { type: String, required: true },
   },
+
   data() {
     return {
       buttonCapture: 'delete',
+      result: 'TEST',
+      counter: 0,
     };
+  },
+  methods: {
+    getId() {
+      console.log('Learning Ressources___', this.id);
+      this.$emit('getId', this.id);
+    },
   },
 };
 </script>

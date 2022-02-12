@@ -5,6 +5,8 @@
         :title="resource.title"
         :description="resource.description"
         :link="resource.link"
+        :id="resource.id"
+        @getId="getId"
       />
     </ul>
   </div>
@@ -13,8 +15,17 @@
 <script>
 import LearningRessources from './LearningRessource.vue';
 export default {
+  data() {
+    return { id: '' };
+  },
   components: { LearningRessources },
   inject: ['resources'],
+  methods: {
+    getId(id) {
+      console.log('stored Ressources___', id);
+      this.$emit('getId', id);
+    },
+  },
 };
 </script>
 

@@ -12,11 +12,10 @@
       type="text"
       :mode="addResButtonMode"
     />
-    <h1>{{ testing }}</h1>
   </base-card>
   <!-- dynamic component -->
   <keep-alive>
-    <component :is="selectedTab"></component>
+    <component :is="selectedTab" @getId="getId"></component>
   </keep-alive>
 </template>
 
@@ -30,15 +29,17 @@ export default {
   data() {
     return {
       selectedTab: 'stored-ressources',
+      id: '',
+
       storedResources: [
         {
-          id: 'official-guide',
+          id: '1_official-guide_terterere',
           title: 'Official Guide',
           description: 'Official documentation of vue.js',
           link: 'https://vuejs.org',
         },
         {
-          id: 'google',
+          id: '2_google_trtrtre',
           title: 'Search Engine',
           description: 'Google Search Engine',
           link: 'https://google.com',
@@ -46,7 +47,7 @@ export default {
       ],
     };
   },
-  inject: ['provideEnteredData'],
+  inject: ['provideEnteredData', 'deleteItemById'],
   provide() {
     return {
       resources: this.storedResources,
@@ -75,6 +76,12 @@ export default {
 
       this.storedResources.push(newResource);
       this.selectedTab = 'stored-ressources';
+    },
+    // Delete requested item
+    getId(id) {
+      const index = this.storedResources.map((e) => e.id).indexOf(id);
+
+      this.storedResources.splice(index, 1);
     },
   },
 };

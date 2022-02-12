@@ -1,5 +1,5 @@
 <template>
-  <button :type="type" :class="mode" @click="handleClick">
+  <button :type="type" :class="mode" @click="handleClick" style="color: white">
     {{ buttonTitle }}
   </button>
   <slot></slot>
@@ -26,7 +26,6 @@ button {
   font-family: inherit;
   background-color: #3a0061;
   border: 1px solid #3a0061;
-  color: white;
   cursor: pointer;
   border-radius: 5px;
   margin-right: 20px;
